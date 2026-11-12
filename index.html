@@ -617,7 +617,6 @@ html.dark h1,
     html.dark main > div:first-child > div:first-child { flex-direction: row !important; flex: 1 1 auto; }
     html.dark main > div:first-child > div:first-child > span { display: none !important; }
     html.dark main > div:first-child .grid { display: flex !important; }
-    html.dark #btn-export-deck { min-height: 44px !important; padding: 8px 12px !important; }
     html.dark #deck-select { min-height: 44px !important; padding: 6px 10px !important; font-size: 14px !important; }
     html.dark #filter-stats-bar { gap: 8px !important; }
     html.dark #filter-stats-bar > div:last-child { padding: 6px 12px !important; border: 0 !important; background: transparent !important; font-size: 12px !important; justify-content: flex-start !important; gap: 14px !important; }
@@ -706,17 +705,10 @@ html.dark h1,
           <select id="deck-select" class="surface-input mobile-tap-md w-full max-w-full min-w-0 truncate text-sm font-semibold text-slate-800 dark:text-slate-100 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl px-3.5 py-2.5 focus:outline-hidden focus:ring-2 focus:ring-red-600">
             <!-- Populated by JS -->
           </select>
-          <button id="btn-delete-deck" class="hidden shrink-0 mobile-tap-md text-xs font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/50 border border-rose-200 dark:border-rose-800 px-3 py-2 rounded-2xl transition-colors" title="Удалить выбранный набор">
-            Удалить набор
-          </button>
         </div>
       </div>
 
       <div class="grid grid-cols-2 sm:flex items-center gap-2.5 shrink-0">
-        <button id="btn-export-deck" class="surface-muted mobile-tap-md text-xs sm:text-sm font-semibold px-3.5 py-2.5 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center justify-center gap-1.5" title="Экспорт, резервная копия на устройство или импорт базы">
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-          <span>Экспорт</span>
-        </button>
       </div>
     </div>
 
@@ -726,9 +718,7 @@ html.dark h1,
         <button data-cat="all" class="cat-btn col-span-2 sm:col-span-1 mobile-tap-md px-4 py-2.5 rounded-2xl bg-red-600 text-white font-semibold transition-colors flex items-center justify-center">Все (65)</button>
         <button data-cat="nomen" class="cat-btn mobile-tap-md px-3 py-2.5 rounded-2xl bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors flex items-center justify-center text-center">🏛️ Существительные (20)</button>
         <button data-cat="verben" class="cat-btn mobile-tap-md px-3 py-2.5 rounded-2xl bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors flex items-center justify-center text-center">⚡ Глаголы (13)</button>
-        <button data-cat="praepositionen" class="cat-btn mobile-tap-md px-3 py-2.5 rounded-2xl bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors flex items-center justify-center text-center">📍 Предлоги (9)</button>
         <button data-cat="adjektive" class="cat-btn mobile-tap-md px-3 py-2.5 rounded-2xl bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors flex items-center justify-center text-center">🧭 Наречия / Прил. (10)</button>
-        <button data-cat="redemittel" class="cat-btn mobile-tap-md px-3 py-2.5 rounded-2xl bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors flex items-center justify-center text-center">💬 Реплики (13)</button>
         <button data-cat="starred" class="cat-btn mobile-tap-md px-3 py-2.5 rounded-2xl bg-white dark:bg-slate-900 text-amber-700 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-slate-800 border border-amber-200 dark:border-amber-800/60 transition-colors flex items-center justify-center text-center">⭐ Избранное</button>
       </div>
 
@@ -874,10 +864,6 @@ html.dark h1,
             <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
             <span>Знаю это слово</span>
           </button>
-          <button id="btn-shuffle" class="col-span-2 sm:col-span-1 surface-muted mobile-tap-md px-4 py-3 rounded-2xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs sm:text-sm font-semibold transition-colors flex items-center justify-center gap-2" title="Перемешать колоду">
-            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-            <span>Перемешать</span>
-          </button>
         </div>
       </div>
     </div>
@@ -967,50 +953,7 @@ html.dark h1,
           </div>
         </div>
 
-        <!-- Collapsible Grammar Reference from Pages 3 & 4 of PDF (Plusquamperfekt + Управление) -->
-        <div>
-          <button id="btn-toggle-verb-ref" class="w-full py-2.5 px-4 rounded-2xl verb-form-box text-xs sm:text-sm font-bold flex items-center justify-between gap-2">
-            <span>📖 Справка из PDF: Plusquamperfekt и Управление (Предлоги, Прилагательные и наречия)</span>
-            <span id="verb-ref-arrow" class="font-extrabold">▼ Показать</span>
-          </button>
-          <div id="verb-ref-panel" class="hidden mt-3 grid grid-cols-1 md:grid-cols-2 gap-3 text-xs leading-relaxed">
-            <div class="verb-form-box p-3.5 rounded-2xl flex flex-col gap-2">
-              <h4 class="font-extrabold text-sm text-red-700 dark:text-amber-300">Plusquamperfekt — предпрошедшее время</h4>
-              <p class="font-semibold">Образование: <b>Imperfekt sein / haben + Partizip II (причастие)</b></p>
-              <div class="grid grid-cols-2 gap-2 pt-1">
-                <div class="p-2 rounded-xl bg-white/60 dark:bg-black/30">
-                  <div class="font-bold mb-1">с глаголом haben:</div>
-                  <div>ich <b>hatte</b> begonnen / gesehen</div>
-                  <div>du <b>hattest</b> begonnen / gesehen</div>
-                  <div>er/sie/es <b>hatte</b> begonnen / gesehen</div>
-                  <div>wir <b>hatten</b> begonnen / gesehen</div>
-                  <div>ihr <b>hattet</b> begonnen / gesehen</div>
-                  <div>sie/Sie <b>hatten</b> begonnen / gesehen</div>
-                </div>
-                <div class="p-2 rounded-xl bg-white/60 dark:bg-black/30">
-                  <div class="font-bold mb-1">с глаголом sein:</div>
-                  <div>ich <b>war</b> geblieben / gesprungen</div>
-                  <div>du <b>warst</b> geblieben / gesprungen</div>
-                  <div>er/sie/es <b>war</b> geblieben / gesprungen</div>
-                  <div>wir <b>waren</b> geblieben / gesprungen</div>
-                  <div>ihr <b>wart</b> geblieben / gesprungen</div>
-                  <div>sie/Sie <b>waren</b> geblieben / gesprungen</div>
-                </div>
-              </div>
-            </div>
-            <div class="verb-form-box p-3.5 rounded-2xl flex flex-col gap-1.5">
-              <h4 class="font-extrabold text-sm text-red-700 dark:text-amber-300">II. Управление (Предлоги и Прилагательные)</h4>
-              <div><b>Предлоги с Genitiv:</b> anstatt, außerhalb, diesseits, halber, hinsichtlich, infolge, inmitten, innerhalb, jenseits, kraft, laut, mittels, namens, oberhalb, um ... willen, ungeachtet, unterhalb, unweit, vermittelst, vermöge, während, wegen, zeit.</div>
-              <div><b>Предлоги с Dativ:</b> aus, außer, bei, binnen, entgegen, gegenüber, gemäß, mit, nach, nächst, nebst, samt, seit, von, zu, zuwider.</div>
-              <div><b>Предлоги с Akkusativ:</b> bis, durch, für, gegen, ohne, sonder, um, wider.</div>
-              <div><b>Предлоги с Dativ и Akkusativ:</b> an, auf, hinter, in, neben, über, unter, vor, zwischen.</div>
-              <div><b>Genitiv и Dativ:</b> dank, längs, trotz, zufolge. | <b>Genitiv и Akkusativ:</b> entlang.</div>
-              <div class="pt-1 border-t border-amber-400/40"><b>Прилагательные с Genitiv:</b> ansichtig, bedürftig, begierig, bewußt, (un-)fähig, froh, genug, gewahr, gewiß, gewohnt, inne, kundig, ledig, leer, los, mächtig, müde, quitt, satt, schuldig, sicher, überdrüssig, verdächtig, voll, wert, würdig.</div>
-              <div><b>Прилагательные с Dativ:</b> ähnlich, angenehm, angst, bekannt, eigen, ergeben, fremd, gehorsam, geläufig, gelegen, gemäß, geneigt, gewachsen, gleich, gnädig, günstig, kund, teuer, treu, verhaßt, wert, willkommen.</div>
-              <div><b>Прилагательные с Akkusativ:</b> breit, groß, hoch, lang, schwer, tief, weit, wert (для времени, меры, стоимости).</div>
-            </div>
-          </div>
-        </div>
+        
 
         <!-- Search & Filter Controls -->
         <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
@@ -1042,35 +985,7 @@ html.dark h1,
   </main>
 
   <!-- Export & Local Device Backup Modal -->
-  <div id="export-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
-    <div class="surface-card bg-white dark:bg-slate-900 rounded-3xl max-w-lg w-full p-6 border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col gap-4">
-      <div class="flex items-center justify-between">
-        <div>
-          <h3 class="text-base font-bold text-slate-900 dark:text-white">Локальная память и Резервная копия</h3>
-          <p class="text-xs text-slate-500 dark:text-slate-400">Сохранение и восстановление всех наборов карточек на устройстве</p>
-        </div>
-        <button id="btn-close-export" class="p-1.5 text-slate-400 hover:text-slate-600 rounded-lg">✕</button>
-      </div>
-
-      <div class="flex flex-wrap gap-2 text-xs">
-        <button id="btn-export-format-semi" class="px-3 py-1.5 rounded-lg bg-red-600 text-white font-semibold">Текст (;)</button>
-        <button id="btn-export-format-json" class="surface-muted px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">JSON</button>
-        <button id="btn-download-backup" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold flex items-center gap-1">
-          💾 Скачать полную базу (.json)
-        </button>
-        <label class="px-3 py-1.5 rounded-lg bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/30 font-semibold cursor-pointer flex items-center gap-1">
-          📂 Восстановить базу
-          <input type="file" id="backup-restore-input" accept=".json" class="hidden">
-        </label>
-      </div>
-
-      <textarea id="export-textarea" rows="8" readonly class="surface-input w-full p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 font-mono text-xs"></textarea>
-      <div class="flex justify-between items-center gap-2">
-        <span class="text-[11px] text-slate-400">Хранилище: IndexedDB + LocalStorage + Android Bridge</span>
-        <button id="btn-copy-export" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-semibold">Скопировать в буфер</button>
-      </div>
-    </div>
-  </div>
+  
 
   <!-- Footer -->
   <footer class="surface-card bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-3 text-center text-xs text-slate-400 transition-colors">
@@ -4219,7 +4134,7 @@ html.dark h1,
         decks = { ...decks, ...stateObj.decks };
       }
       restoreBuiltinDecks();
-      if (stateObj.activeDeckId && (decks[stateObj.activeDeckId] || stateObj.activeDeckId === '__all__')) {
+      if (stateObj.activeDeckId && (decks[stateObj.activeDeckId])) {
         activeDeckId = stateObj.activeDeckId;
       }
     }
@@ -4288,7 +4203,7 @@ html.dark h1,
       }
 
       restoreBuiltinDecks();
-      if (activeDeckId !== '__all__' && !decks[activeDeckId]) activeDeckId = FIRST_DECK_ID;
+      if (!decks[activeDeckId]) activeDeckId = FIRST_DECK_ID;
       cardsData = getActiveDeckCards();
       currentCards = [...cardsData];
       renderDeckSelect();
@@ -4297,19 +4212,6 @@ html.dark h1,
     }
 
     function getActiveDeckCards() {
-      if (activeDeckId === '__all__') {
-        const merged = [];
-        const seen = new Set();
-        Object.values(decks).forEach(d => {
-          d.cards.forEach(c => {
-            if (!seen.has(c.front)) {
-              seen.add(c.front);
-              merged.push(c);
-            }
-          });
-        });
-        return merged;
-      }
       return decks[activeDeckId] ? [...decks[activeDeckId].cards] : [...decks[FIRST_DECK_ID].cards];
     }
 
@@ -4322,17 +4224,7 @@ html.dark h1,
         const selected = k === activeDeckId ? 'selected' : '';
         html += `<option value="${k}" ${selected}>${d.name} (${d.cards.length})</option>`;
       });
-      if (deckKeys.length > 1) {
-        html += `<option value="__all__" ${activeDeckId === '__all__' ? 'selected' : ''}>🌐 Все наборы вместе</option>`;
-      }
       select.innerHTML = html;
-
-      const delBtn = document.getElementById('btn-delete-deck');
-      if (!isBuiltinDeck(activeDeckId) && activeDeckId !== '__all__') {
-        delBtn.classList.remove('hidden');
-      } else {
-        delBtn.classList.add('hidden');
-      }
     }
 
     function updateCategoryCounts() {
@@ -4599,16 +4491,6 @@ html.dark h1,
       }
       saveState();
       nextCard();
-    }
-
-    function shuffleCards() {
-      for (let i = currentCards.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [currentCards[i], currentCards[j]] = [currentCards[j], currentCards[i]];
-      }
-      currentIndex = 0;
-      renderCard('next');
-      showToast('Колода перемешана 🔀');
     }
 
     function setCategory(cat) {
@@ -4900,7 +4782,6 @@ html.dark h1,
     document.getElementById('card-container').addEventListener('click', toggleFlip);
     document.getElementById('btn-next').addEventListener('click', nextCard);
     document.getElementById('btn-prev').addEventListener('click', prevCard);
-    document.getElementById('btn-shuffle').addEventListener('click', shuffleCards);
     document.getElementById('btn-star').addEventListener('click', (e) => { e.stopPropagation(); toggleStar(); });
     document.getElementById('btn-speak').addEventListener('click', (e) => {
       e.stopPropagation();
@@ -4942,95 +4823,11 @@ html.dark h1,
       setView('quiz');
       showToast('Тест по 185 сильным глаголам запущен! 📝', 'success');
     });
-    document.getElementById('btn-toggle-verb-ref').addEventListener('click', () => {
-      const panel = document.getElementById('verb-ref-panel');
-      const arrow = document.getElementById('verb-ref-arrow');
-      const isHidden = panel.classList.toggle('hidden');
-      arrow.textContent = isHidden ? '▼ Показать' : '▲ Скрыть';
-    });
 
     // Deck select & delete
     document.getElementById('deck-select').addEventListener('change', function() {
       switchDeck(this.value);
       showToast('Выбран набор: ' + this.options[this.selectedIndex].text);
-    });
-
-    document.getElementById('btn-delete-deck').addEventListener('click', () => {
-      if (!isBuiltinDeck(activeDeckId) && activeDeckId !== '__all__' && decks[activeDeckId]) {
-        const deletedName = decks[activeDeckId].name;
-        delete decks[activeDeckId];
-        switchDeck(FIRST_DECK_ID);
-        showToast(`Набор «${deletedName}» удалён`);
-      }
-    });
-
-    // Export & Backup Modal
-    const exportModal = document.getElementById('export-modal');
-    const exportTextarea = document.getElementById('export-textarea');
-    function fillExportText(format) {
-      if (format === 'json') {
-        exportTextarea.value = JSON.stringify(cardsData, null, 2);
-      } else {
-        exportTextarea.value = cardsData.map(c => `${c.front};${c.back}${c.plural ? ' (' + c.plural + ')' : ''}`).join('\n');
-      }
-    }
-    document.getElementById('btn-export-deck').addEventListener('click', () => {
-      fillExportText('semi');
-      exportModal.classList.remove('hidden');
-      exportModal.classList.add('flex');
-    });
-    document.getElementById('btn-close-export').addEventListener('click', () => {
-      exportModal.classList.add('hidden');
-      exportModal.classList.remove('flex');
-    });
-    document.getElementById('btn-export-format-semi').addEventListener('click', () => fillExportText('semi'));
-    document.getElementById('btn-export-format-json').addEventListener('click', () => fillExportText('json'));
-    document.getElementById('btn-copy-export').addEventListener('click', () => {
-      exportTextarea.select();
-      try {
-        document.execCommand('copy');
-        showToast('Скопировано в буфер обмена! 📋', 'success');
-      } catch(e) {}
-    });
-
-    // Download full local DB backup file (.json)
-    document.getElementById('btn-download-backup').addEventListener('click', () => {
-      const fullBackup = JSON.stringify(serializeFullState(), null, 2);
-      exportTextarea.value = fullBackup;
-      try {
-        const blob = new Blob([fullBackup], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `lernwortschatz_backup_${new Date().toISOString().slice(0,10)}.json`;
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        URL.revokeObjectURL(url);
-        showToast('Файл резервной копии сохранён 💾', 'success');
-      } catch(e) {
-        showToast('Резервная копия выведена в текстовое поле', 'info');
-      }
-    });
-
-    // Restore full local DB from backup file (.json)
-    document.getElementById('backup-restore-input').addEventListener('change', (e) => {
-      if (!e.target.files || !e.target.files[0]) return;
-      const reader = new FileReader();
-      reader.onload = (evt) => {
-        try {
-          const parsed = JSON.parse(evt.target.result);
-          applyFullStateObject(parsed);
-          saveState();
-          switchDeck(activeDeckId);
-          exportModal.classList.add('hidden');
-          exportModal.classList.remove('flex');
-          showToast('База карточек успешно восстановлена на устройстве! 🎉', 'success');
-        } catch(err) {
-          showToast('Ошибка чтения файла резервной копии', 'warn');
-        }
-      };
-      reader.readAsText(e.target.files[0], 'UTF-8');
     });
 
     // Quiz next / restart
