@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#101112">
+  <meta name="referrer" content="no-referrer">
   <title>Lernwortschatz</title>
   <style>
 /* Lernwortschatz — оформление в стиле приложения «Расписание» (палитра «Графит», одна тема). */
@@ -590,8 +591,11 @@ let onlineAudio = null;
 function speakOnline(text) {
   try {
     if (onlineAudio) onlineAudio.pause();
-    onlineAudio = new Audio('https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=de&q=' + encodeURIComponent(text.slice(0, 180)));
-    onlineAudio.play().catch(() => showToast('Не удалось озвучить: проверьте интернет'));
+    // Google отвечает ошибкой 404, если запрос пришёл со страницы с «Referer», поэтому адрес страницы не передаём
+    onlineAudio = new Audio();
+    onlineAudio.referrerPolicy = 'no-referrer';
+    onlineAudio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=de&q=' + encodeURIComponent(text.slice(0, 180));
+    onlineAudio.play().catch(() => showToast('Не удалось получить озвучку, попробуйте ещё раз'));
   } catch (e) { showToast('Озвучка недоступна на этом устройстве'); }
 }
 
