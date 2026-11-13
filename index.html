@@ -555,20 +555,44 @@ function speakText(text) {
   // убираем пометки множественного числа («-n», «¨-e») и скобки, но сохраняем все формы глагола
   const clean = String(text || '').replace(/\(.*?\)/g, '').split(',').filter(p => !/^\s*[¨\-–]/.test(p)).join(', ').replace(/\s+/g, ' ').trim();
   if (!clean) return;
+  const native = !!(window.AndroidBridge && typeof window.AndroidBridge.speakGerman === 'function');
   try {
-    if (window.AndroidBridge && typeof window.AndroidBridge.speakGerman === 'function') {
-      if (window.AndroidBridge.speakGerman(clean) === true) return;
-    }
+    if (native && window.AndroidBridge.speakGerman(clean) === true) return;
   } catch (e) { /* нет моста */ }
-  if ('speechSynthesis' in window) {
-    window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(clean);
-    u.lang = 'de-DE';
-    u.rate = 0.85;
-    if (!germanVoice) germanVoice = pickGermanVoice();
-    if (germanVoice) u.voice = germanVoice;
-    window.speechSynthesis.speak(u);
+  if (native) {   // в APK браузерный голос обычно молчит — честно говорим, что нужно сделать
+    showToast('Нет немецкого голоса: в настройках телефона установите «Синтез речи» Google и язык Deutsch');
+    return;
   }
+  speakInBrowser(clean);
+}
+
+// Браузер (сайт, Telegram Mini App): голос системы, а если его нет (во встроенном браузере Telegram на телефонах
+// голосов часто нет) — запасной вариант: произношение с серверов Google Translate (нужен интернет).
+let browserVoiceBroken = false;
+function speakInBrowser(text) {
+  if (browserVoiceBroken || !('speechSynthesis' in window)) { speakOnline(text); return; }
+  if (!germanVoice) germanVoice = pickGermanVoice();
+  if (!germanVoice && !window.speechSynthesis.getVoices().length) { browserVoiceBroken = true; speakOnline(text); return; }
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'de-DE';
+  u.rate = 0.85;
+  try { if (germanVoice) u.voice = germanVoice; } catch (e) { /* неподходящий объект голоса — говорим голосом по умолчанию */ }
+  let started = false;
+  u.onstart = () => { started = true; };
+  u.onerror = () => { if (!started) { browserVoiceBroken = true; speakOnline(text); } };
+  window.speechSynthesis.speak(u);
+  setTimeout(() => {   // голос «принял» фразу, но не заговорил
+    if (!started && !window.speechSynthesis.speaking) { browserVoiceBroken = true; window.speechSynthesis.cancel(); speakOnline(text); }
+  }, 1500);
+}
+let onlineAudio = null;
+function speakOnline(text) {
+  try {
+    if (onlineAudio) onlineAudio.pause();
+    onlineAudio = new Audio('https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=de&q=' + encodeURIComponent(text.slice(0, 180)));
+    onlineAudio.play().catch(() => showToast('Не удалось озвучить: проверьте интернет'));
+  } catch (e) { showToast('Озвучка недоступна на этом устройстве'); }
 }
 
 // ============================================================ лекции
